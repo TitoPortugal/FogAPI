@@ -1,0 +1,7 @@
+port: 8888
+node_ips:
+    master: localhost #192.168.0.21
+    workers: []
+    
+    
+    
