@@ -8,9 +8,10 @@ from tornado.httpclient import AsyncHTTPClient
 
 
 class FogMaster:
-    def __init__(self):
+    def __init__(self, configuration):
         self.app = self.make_app()
         self._lock = threading.Lock()
+        self.configuration = configuration
         
 
     class TaskHandler(tornado.web.RequestHandler):
@@ -46,7 +47,7 @@ class FogMaster:
                 output_file.write(json.dumps(output))
                         
     
-    def main(self, configuration):
+    def main(self):
         
         while True:    
             statusthread = threading.Thread(target=self.request_status())
